@@ -1,0 +1,625 @@
+body {
+  margin: 0px;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+
+div{
+  box-sizing: border-box;
+}
+
+main {
+  /* width: 100vw; */
+  /* margin-top: 170px; */
+  /* 85 + 40 + 45, 고정된 길이만큼 마진 추가하기*/
+  margin-bottom: 200px;
+  /* margin-bottom: 400px; */
+  /* flex: 1; */
+}
+
+.footer {
+  /* z-index: 1; */
+  height: 200px;
+  width: 100%;
+  /* position: sticky; */
+  bottom: 0;
+  background-color: black;
+  color: white;
+}
+
+.head {
+  background-color: white;
+  color: black;
+  font-size: 19px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+/* 버튼 태그에 스타일 적용 */
+button {
+  font-family: 'TheJamsil4Medium';
+  height: auto;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  padding: 4px;
+}
+
+
+/* ---------------------------------------------------------------- */
+
+/* 감싼 container에 flex스타일 적용 */
+.container {
+  display: flex;
+}
+
+/* 상품정렬 nav바 오른쪽 끝으로 고정 */
+#arrayNav {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  align-items: center;
+  justify-content: end;
+  font-size: 0.9vw;
+  font-family: 'TheJamsil4Medium';
+}
+
+#arrayNav span {
+  margin-left: 1%;
+  margin-right: 1%;
+  cursor: pointer;
+}
+/* -------------------------------- 안내 문구 -------------------------------- */
+.couponNav {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+}
+
+.coupon {
+  height: 40px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.coupon button {
+  background-color: transparent;
+  color: white;
+  border: 0;
+  width: 23px;
+  height: auto;
+}
+
+.coupon p {
+  font-family: 'TheJamsil3Regular';
+  width: 100%;
+  text-align: center;
+  color: white;
+  display: none;
+}
+
+
+/* -----------------------------윗쪽 navi 스타일--------------------------- */
+/* main navi(필터&상품정렬)스타일 */
+#firstNav {
+  height: 45px;
+  border-bottom: 1px solid rgb(224, 221, 221);
+  padding: 1px;
+  font-size: 14px;
+  font-family: 'TheJamsil3Regular';
+  /* width: 100%; */
+}
+
+/* 필터숨기기 스타일 */
+.filterHide {
+  box-sizing: border-box;
+  padding-left: 15px;
+  display: flex;
+  height: 45px;
+  font-size: 13px;
+  color: gray;
+  font-family: 'TheJamsil3Regular';
+  cursor: pointer;
+  /* align-items: start; */
+}
+.filterHideLabel {
+  display: flex;
+  width: 200px;
+  height: 100%;
+  cursor: pointer;
+  /* text-align: center; */
+  align-items: center;
+}
+/* 필터숨기기 아이콘 */
+.arrowIcon {
+  margin-top: 10px;
+  width: 18px;
+  height: 20px;
+  display: flex;
+  text-align: center;
+  align-items: center
+}
+
+/* 총 상품수 */
+#totalProductAmount {
+  height: 100%;
+  width: 250px;
+  padding: 10px;
+  padding-left: 30px;
+  font-size: 0.9vw;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 초기화 */
+.refreshA{
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9vw;
+  margin-left: 7px;
+}
+
+.refreshA img {
+  margin: 8%;
+  width: 20%;
+}
+
+/* -----------------------------메인 사이즈 지정--------------------------- */
+main {
+  display: flex;
+  margin-top: 82px;
+  /* flex-direction: row; */
+}
+
+.sideArea {
+  width: 250px;
+  height: 100vh;
+}
+
+.productArea {
+  flex: 1;
+}
+
+/* ---------------------------카테고리 스타일 지정-------------------------- */
+
+/* 카테고리별 버튼 설정 */
+.cateButtonArea {
+  border-bottom: 1px solid rgb(216, 213, 213);
+}
+
+.cateButton {
+  background-color: white;
+  border: 0px;
+}
+
+/* 고정된 사이드바 사이즈 지정 */
+#sideBar {
+  visibility: inherit;
+  margin-top: 5px;
+  background-color: white;
+  padding : 2px;
+  padding-top: 25px;
+  position: fixed;
+  left: 0;
+  height: 80%;
+  width: 250px;
+  overflow-y : scroll;
+  border-right: 3px solid rgb(231, 230, 230);
+  box-sizing: border-box;
+  /* 로고의 높이만큼 여백 추가하기 */
+  /* top: 200px;  */
+  /* bottom: 200px;  */
+}
+
+.sideright {
+  margin-bottom: 10px;
+}
+
+/* 사이드바-카테고리별 스타일 적용 */
+.productBar {
+  font-family: 'TheJamsil2Light';
+  font-size: 15px;
+  padding: 2px;
+  margin-bottom: 15px;
+}
+
+/* 사이드바-카테고리 */
+.productCategory {
+  margin-left: 11px;
+}
+
+/* 의류사이즈 table 설정*/
+.sizeTable {
+  border-collapse: collapse;
+  /* 테두리 두줄->한줄 */
+  margin: 3px;
+  margin-top: 10px;
+  border-spacing: 0.5px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+tr,td {
+  width: 32%;
+  height: 30px;
+  border: 1px solid rgb(182, 195, 212);
+  font-size: 11px;
+  text-align: center;
+  cursor: pointer;
+  padding: 7px;
+}
+
+/* a태그를 동그라미로 만들어서 색깔넣기 */
+.circle-color {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  /* border: 2px solid  rgba(0,0,0,0.1); */
+  box-shadow: 1px 1px 4px gray;
+  cursor: pointer;
+}
+
+/* 컬러 버튼 마진 정하기 */
+#colorButton {
+  text-align: center;
+  margin: 8px;
+}
+
+#colorButton a {
+  padding: 5px;
+  margin: 9px;
+}
+
+/* 성별 선택박스 마진 */
+.genderBox input {
+  margin: 10px;
+}
+
+
+/* -----------------------------상품 이미지 스타일--------------------------- */
+.productArea {
+  /* justify-content: flex-start; */
+  /* flex-direction: column; */
+  /* width: 100%; */
+  /* flex-basis: auto; */
+  /* margin-left: 50px; */
+  padding: 3px;
+  padding-right: 3px;
+  width: 100%;
+  display: block;
+}
+
+/* 상품 이미지의 사이즈 자동 조절 */
+.pArea div {
+  float: inline-start;
+  width: 29%;
+  height: 20%;
+  margin: 1%;
+  padding: 1%;
+  padding-top: 0%;
+}
+
+.pArea img {
+  width: 100%;
+  height: auto;
+}
+
+.pArea span {
+  font-size: 0.8vw;
+  background-color: rgb(235, 233, 233);
+  color: rgb(100, 98, 98);
+  padding: 1%;
+  margin: 3%;
+  margin-left: 0;
+}
+
+.pArea p {
+  font-size: 1vw;
+}
+
+.pArea p:nth-of-type(2) {
+  font-family: 'TheJamsil5Bold';
+}
+
+    
+/* ------------------------- 비디오 스타일 ------------------------- */
+.videoButton{
+  position: fixed;
+  bottom: 45px;
+  right: 95px;
+  width : 300px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.videoButton video{
+  width: 100%;
+}
+.xButton{
+  /* position: fixed; */
+  width: 100%;
+  background-color : transparent;
+  border: 0;
+  color: black;
+  cursor: pointer;
+  text-align: right;
+}
+
+/* ----------------------- 위 아래 버튼 스타일 ------------------------ */
+ .scrollButton{
+  height: 45px;
+  width: 48px;
+  position: fixed;
+  background-color: gray;
+  border: 0px solid;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+ }
+ .upButton{
+  bottom: 110px;
+  right: 20px;
+ }
+ .downButton{
+  bottom: 50px;
+  right: 20px;
+ }
+ 
+
+
+/* -------------------------------------------------------- */
+/* 폰트 */
+@font-face {
+  font-family: 'TheJamsil2Light';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil2Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TheJamsil3Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil3Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TheJamsil4Medium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil4Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TheJamsil5Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TheJamsil6ExtraBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil6ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* ================================================================= */
+/* =======================  header - with.dayeon =================== */
+
+/* header */
+header {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  border-bottom: 2px solid black;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 999;
+}
+
+.main-toolbar {
+  height: 50px;
+}
+
+.top-bar-ul{
+  font-family: 'TheJamsil3Regular'
+}
+
+header * {
+  display: flex;
+  margin: 5px;
+}
+
+/* 로고 */
+.nf-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nf-logo>img {
+  width: 80px;
+  height: 40px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+/* =========== */
+/* top-bar */
+.top-bar {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.top-bar>section {
+  display: flex;
+  align-items: center;
+  flex-basis: 600px;
+  flex-shrink: 1;
+  cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  text-decoration: none;
+  width: 60px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* 여성 버튼 댔을때. */
+.women>span:hover~.women_sub_menu {
+  cursor: pointer;
+  display: block;
+}
+
+.men>span:hover~.men_sub_menu {
+  display: block;
+}
+
+.navbar-btn {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100px;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+  cursor: pointer;
+}
+
+#searchAll {
+  /* SERACH input창 */
+  margin: 0 10px;
+  flex-basis: 180px;
+  height: 30px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+#searchBtn {
+  background-color: rgb(241, 195, 195);
+  border: 0;
+  border-radius: 20px;
+  flex-basis: 50px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: brown;
+  flex-shrink: 0;
+}
+
+header>input[type=button] {
+  /* 검색 버튼 */
+  flex-basis: 50px;
+  width: 50px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+  margin-left: -5px;
+  cursor: pointer;
+  flex-shrink: 1;
+}
+
+.top-bar>ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.top-menu li {
+  margin-right: 20px;
+  position: relative;
+}
+
+.menu {
+  margin: 0;
+  background-color: rgb(205 195 205 / 19%);
+  border-top: 1px solid black;
+}
+
+#men-menu {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 165px;
+  margin-bottom: 30px;
+  display: none;
+}
+
+#women-menu {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 165px;
+  margin-bottom: 30px;
+  display: none;
+}
+
+.menu-main {
+  margin: 0;
+}
+
+.menu-title {
+  height: 20px;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.menu-title>a {
+  width: 150px;
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  margin: 0;
+}
+
+.menu-item>a {
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: black;
+  margin: 0;
+  padding: 5px 0;
+}
+
+.menu-item>a:hover {
+  color: #b36262;
+}
+/* ================================================================= */
+/* ================================================================= */

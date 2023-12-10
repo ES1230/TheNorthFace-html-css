@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men_Product</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> <!--CDN방식 -->
+  <link rel="stylesheet" href="Men_Style.css">
+  <script defer src="Men_Product.js"></script>
+  <script src="https://kit.fontawesome.com/1f15888d43.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+
+    <div class="main-toolbar">
+      <div class="nf-logo">
+        <img src="img_main/logo.png" alt="nf-logo" onclick=" location.href = 'whole copy.html'">
+      </div>
+
+      <div class="top-bar">
+        <div class="top-bar-ul refreshLink" >
+          <a href="Men_Product.html" class="navbar men-menu">남성</a>
+          <a href="#" class="navbar women-menu">여성</a>
+          <a href="#" class="navbar navbar-lank">랭킹</a>
+          <a href="#" class="navbar navbar-new">신상</a>
+        </div>
+
+        <section>
+          <button class="navbar-btn" onclick="location.href='login+join_view.html'">
+            <i class="fa-solid fa-unlock"></i>로그인</button>
+          <button class="navbar-btn" onclick="location.href='join.html'">
+            <i class="fa-solid fa-user"></i>회원가입</a></button>
+          <button class="navbar-btn" onclick="cart();"><i class="fa-solid fa-cart-plus">
+            </i>장바구니</button>
+          <input type="search" id="searchAll" placeholder="SEARCH">
+          <button type="button" id="searchBtn"><i class="fa-solid fa-magnifying-glass">
+            </i></button>
+        </section>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div class="menu-content" id="men-menu">
+        <div class="menu-title">
+          <a href="#">다운&패딩</a>
+          <a href="#">자켓&조끼</a>
+          <a href="#">티&셔츠</a>
+          <a href="#">바지</a>
+        </div>
+
+        <div class="menu-main">
+          <div class="menu-item">
+            <a href="#">롱다운&파카</a>
+            <a href="#">다운&패딩자켓</a>
+            <!-- <a href="#">다운&패딩조끼</a> -->
+          </div>
+          <div class="menu-item">
+            <a href="#">기능성자켓</a>
+            <a href="#">자켓</a>
+            <a href="#">아노락</a>
+            <a href="#">조끼</a>
+            <a href="#">플리스자켓</a>
+          </div>
+          <div class="menu-item">
+            <a href="#">티셔츠</a>
+            <a href="#">맨투맨&후디</a>
+            <a href="#">집티&터틀넥</a>
+            <a href="#">폴로&셔츠</a>
+          </div>
+          <div class="menu-item">
+            <a href="#">팬츠</a>
+            <a href="#">트레이닝&조거팬츠</a>
+            <a href="#">타이즈</a>
+            <a href="#">숏팬츠</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-content" id="women-menu">
+        <div class="menu-title">
+          <a href="#">다운&패딩</a>
+          <a href="#">자켓&조끼</a>
+          <a href="#">티&셔츠</a>
+          <a href="#">바지</a>
+        </div>
+        <div class="menu-main">
+          <div class="menu-item">
+            <a href="#">롱다운&파카</a>
+            <a href="#">다운&패딩자켓</a>
+            <a href="#">다운&패딩조끼</a>
+          </div>
+          <div class="menu-item">
+            <a href="#">기능성자켓</a>
+            <a href="#">자켓</a>
+            <a href="#">아노락</a>
+            <a href="#">조끼</a>
+            <a href="#">플리스자켓</a>
+          </div>
+          <div class="menu-item">
+            <a href="#">티셔츠</a>
+            <a href="#">맨투맨&후디</a>
+            <a href="#">집티&터틀넥</a>
+            <a href="#">폴로&셔츠</a>
+            <a href="#">원피스</a>
+          </div>
+          <div class="menu-item">
+            <a href="#">팬츠&스커트</a>
+            <a href="#">트레이닝&조거팬츠</a>
+            <a href="#">레깅스</a>
+            <a href="#">숏팬츠</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="couponNav">
+    <div class="coupon rotateP">
+      <!-- <button class="rotateFirstButton"> ← </button> -->
+      <p>주문량 증가로 인한 배송, 반품 및 교환 지연안내</p>
+      <p>멤버십 쿠폰팩</p>
+      <p>온라인단독 상품 15% 할인 + 앱 전용 10% 추가할인 </p>
+      <p>주문량 증가로 품절이 발생할 수 있어 반품 후 재주문을 권장 드립니다.</p>
+      <!-- <button class="rotateLastButton"> → </button> -->
+    </div>
+
+    <!-- 상품정렬 기준 바 -->
+    <div class="container" id="firstNav">
+      <div class="main_content1 filterHide" id="filterHide">
+        <label class="filterHideLabel">필터 숨기기</label>
+        <img class="arrowIcon" src="resources/LRarrow.png">
+      </div>
+
+      <div id="totalProductAmount">총 &nbsp; <span id="tPA"> </span>개의 상품</div>
+      <a href="#" class="refreshA refreshLink"> 초기화
+        <img
+          src="https://w7.pngwing.com/pngs/337/290/png-transparent-reset-button-computer-icons-restart-miscellaneous-monochrome-black.png">
+      </a>
+      <div id="arrayNav" class="refreshLink">
+        <span class="arrayCategory">인기 상품순 </span>|
+        <span class="arrayCategory">높은 가격순 </span>|
+        <span class="arrayCategory">낮은 가격순 </span>|
+        <span class="arrayCategory">리뷰 많은순</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- 사이드바 -->
+    <div class="sideArea" id="sideArea"><!-- 고정시키기 위한 빈 공간-->
+      <div class="nav content1" id="sideBar">
+
+        <div class="productBar" id="product-category">
+          <div class="cateButtonArea">
+            <button type="button" class="cateButton toggle" id="labelCategory" style="width: 80%;">카테고리
+              <button type="button" class="cateButton toggle sideright" style="width: 20%; text-align: center;"
+                ;>ㅡ</button></button>
+          </div>
+          <div class="nextDiv productCategory">
+            <p class="selectCategory" id="allViewcate">전체보기</p>
+            <p class="selectCategory" id="padding">다운&패딩</p>
+            <p class="selectCategory" id="jacket">자켓&조끼</p>
+            <p class="selectCategory" id="shirt">티&셔츠</p>
+            <p class="selectCategory" id="pants">바지</p>
+          </div>
+        </div>
+        <!-- 컬러 -->
+        <div class="productBar" id="price-category">
+          <div class="cateButtonArea">
+            <button type="button" class="cateButton toggle" id="labelColor" style="width: 80%;">컬러
+              <button type="button" class="cateButton toggle sideright" style="width: 20%; text-align: center;"
+                ;>ㅡ</button></button>
+          </div>
+          <div class="nextDiv">
+            <div id="colorButton">
+              <a href="#" class="circle-color" title="white" style="background-color: white;"></a>
+              <a href="#" class="circle-color" title="beige" style="background-color: beige"></a>
+              <a href="#" class="circle-color" title="yellow" style="background-color: yellow;"></a>
+              <a href="#" class="circle-color" title="orange" style="background-color: orange;"></a>
+            </div>
+            <div id="colorButton">
+              <a href="#" class="circle-color" title="pink" style="background-color: pink;"></a>
+              <a href="#" class="circle-color" title="violet" style="background-color: violet;"></a>
+              <a href="#" class="circle-color" title="red" style="background-color: red;"></a>
+              <a href="#" class="circle-color" title="brown" style="background-color: brown;"></a>
+            </div>
+            <div id="colorButton">
+              <a href="#" class="circle-color" title="green" style="background-color: green;"></a>
+              <a href="#" class="circle-color" title="blue" style="background-color: blue;"></a>
+              <a href="#" class="circle-color" title="gray" style="background-color: gray;"></a>
+              <a href="#" class="circle-color" title="black" style="background-color: black;"></a>
+            </div>
+          </div>
+        </div>
+        <!-- 의류 사이즈 -->
+        <div class="productBar" id="color-category">
+          <div class="cateButtonArea">
+            <button type="button" class="cateButton toggle" id="labelSize" style="width: 80%;"> 의류 사이즈
+              <button type="button" class="cateButton toggle sideright" style="width: 20%; text-align: center;"
+                ;>ㅡ</button></button>
+          </div>
+          <div class="nextDiv">
+            <table class="sizeTable">
+              <tr class="sizeTableChilderen">
+                <td class="size" id="allSize">ALL</td>
+                <td class="size" id="80">080(XXS)</td>
+                <td class="size" id="85">085(XS)</td>
+              </tr>
+              <tr>
+                <td class="size" id="90">090(S)</td>
+                <td class="size" id="95">095(M)</td>
+                <td class="size" id="100">100(L)</td>
+              </tr>
+              <tr>
+                <td class="size" id="105">105(XL)</td>
+                <td class="size" id="110">110(XXL)</td>
+                <td class="size" id="115">115(XXXL)</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="productBar" id="size-category">
+          <div class="cateButtonArea">
+            <button type="button" class="cateButton toggle" id="labelPadding" style="width: 80%;">성별
+              <button type="button" class="cateButton toggle sideright" style="width: 20%; text-align: center;"
+                ;>ㅡ</button></button>
+          </div>
+          <div class="genderBox nextDiv">
+            <label class="genderLabel allView">
+              <input type="radio" name="genderLabel" vlaue="남녀공용" class="allView"> 남녀공용
+            </label><br>
+            <label class="genderLabel" id="Men">
+              <input type="radio" name="genderLabel" value="남성" class="Men"> 남성
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- 상품이미지 페이지 -->
+     <div class="productArea container" id="productArea">
+      <div class="pArea">
+        <div class="padding black 90 95 100 105 110 115">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000035943/NJ1DP69B.jpg?gallery" 
+          alt="M'S 1996 WATER SHIELD NUPTSE JACKET" class="img1">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ1DP69B_NJ1DP69B_01.jpg?gallery" class="img2">
+          <p class="productName">WATER SHIELD NUPTSE JACKET</p>
+          <p>459,000 원</p>
+          <span>#RDS다운</span><span>#레귤러핏</span>
+        </div>
+        <div class="jacket white pink 80 85 90 95 100">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034870/NJ4FP57C.jpg?gallery" 
+          alt="PLAY GREEN RVS FLEECE HOODIE" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ4FP57C_NJ4FP57C_02.jpg?gallery" class="img2">
+          <p class="productName">PLAY GREEN RVS FLEECE HOODIE</p>
+          <p>125,300 원</p>
+          <span>#캠핑용</span><span>#일상용</span>
+        </div>
+        <div class="padding black 85 90 95 100 105 110">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ1DP77A_NJ1DP77A_hover.jpg?browse" 
+          alt="BE BETTER DOWN JACKET" class="img1 ">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ1DP77A_NJ1DP77A_02.jpg?gallery" class="img2">
+          <p class="productName">BE BETTER DOWN JACKET</p>
+          <p>299,000 원</p>
+          <span>#RDS다운</span><span>#캠핑용</span><span>#일상용</span>
+        </div>
+        <div class="Men padding brown green 95 100 105 110 115">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ3NP60K_NJ3NP60K_primary.jpg?gallery" 
+          alt="WAX HEAT COACH JACKET" class="img1">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ3NP60K_NJ3NP60K_01.jpg?gallery" class="img2">
+          <p class="productName">WAX HEAT COACH JACKET</p>
+          <p>288,000 원</p>
+          <span>#여행용</span><span>#일상용</span><span>#루즈핏</span>
+        </div>
+        <div class="jacket beige 80 85 90 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034824/NJ3NP61K.jpg?gallery" 
+          alt="VILAN HEAT BLOUSON" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034824/NJ3NP61K_NJ3NP61K_01.jpg?gallery" class="img2">
+          <p class="productName">VILAN HEAT BLOUSON</p>
+          <p>208,000 원</p>
+          <span>#여행용</span><span>#일상용</span>
+        </div>
+        <div class="padding white 90 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NC2DP65B_NC2DP65B_primary.jpg?gallery" 
+          alt="M'S ASPEN TECH DOWN COAT" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NC2DP65B_NC2DP65B_01.jpg?gallery" class="img2">
+          <p class="productName">M'S ASPEN TECH DOWN COAT</p>
+          <p>539,000 원</p>
+          <span>#RDS다운</span><span>#방한용</span><span>#레귤러핏</span>
+        </div>
+        <div class="jacket khaki beige green 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NT7LP12C_NT7LP12C_primary.jpg?gallery" 
+          alt="MA TRAINING ANORAK" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NT7LP12C_NT7LP12C_01.jpg?gallery" class="img2">
+          <p class="productName">MA TRAINING ANORAK</p>
+          <p>99,000 원</p>
+          <span>#트레이닝용</span><span>#일상용</span><span>#루즈핏</span>
+        </div>
+        <div class="padding white 90 95 100 105 110 115">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034635/NJ1DP86B_NJ1DP86B_prmary.jpg?gallery" 
+          alt="POLAR AIR DOWN BOMBER" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ1DP86B_NJ1DP86B_01.jpg?gallery" class="img2">
+          <p class="productName">POLAR AIR DOWN BOMBER</p>
+          <p>419,000 원</p>
+          <span>#RDS다운</span><span>#아웃도어활동용</span>
+        </div>
+        <div class="jacket shirt white green beige 90 95 100 105 110 115">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034472/NJ4FP56B-1.jpg?gallery" 
+          alt="PLAY GREEN RVS FLEECE ANORAK" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034472/NJ4FP56B.jpg?gallery" class="img2">
+          <p class="productName">PLAY GREEN RVS FLEECE ANORAK</p>
+          <p>118,300 원</p>
+          <span>#일상용</span><span>#레귤러핏</span>
+        </div>
+        <div class="padding brown beige 95 100 105 110 115" >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ1DP77B_NJ1DP77B_01.jpg?gallery" 
+          alt="BE BETTER DOWN JACKET" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ1DP77B_NJ1DP77B_02.jpg?gallery" class="img2">
+          <p class="productName">BE BETTER DOWN JACKET</p>
+          <p>299,000 원</p>
+          <span>#RDS 다운</span><span>#캠핑용</span><span>#일상용</span>
+        </div>
+        <div class="padding red 90 95 100 105 110 115">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ1DP73B_NJ1DP73B_primary.jpg?gallery" 
+          alt="BARUNTSE DOWN JACKET" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ1DP73B_NJ1DP73B_01.jpg?gallery" class="img2">
+          <p class="productName">BARUNTSE DOWN JACKET</p>
+          <p>599,000 원</p>
+          <span>#고산원정용</span><span>#베이스캠프용</span>
+        </div>
+        <div class="jacket white gray 90 95 100 105 110 115">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ2YP50C_NJ2YP50C_primary.jpg?gallery" 
+          alt="M'S TRAVELER TRICLIMATE JACKET" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ2YP50C_NJ2YP50C_01.jpg?gallery" class="img2">
+          <p class="productName">M'S TRAVELER TRICLIMATE JACKET</p>
+          <p>351,200 원</p>
+          <span>#여행용</span><span>#일상용</span><span>#레귤러핏</span>
+        </div>
+        <div class="Men jacket navy black blue 95 100 105 110 115">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NI3BP84L_NI3BP84L_primary.jpg?gallery" 
+          alt="MARTIS JACKET SP" class="img1"  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NI3BP84L_NI3BP84L_01.jpg?gallery" class="img2">
+          <p class="productName">MARTIS JACKET SP</p>
+          <p>178,000 원</p>
+          <span>#캠핑용</span><span>#일상용</span><span>#레귤러핏</span>
+        </div>
+        <div class="Men jacket gray black navy 90 95 100 105 110 115">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034866/NJ4FP55B.jpg?gallery" 
+          alt="DENALI FLEECE JACKET" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ4FP55B_NJ4FP55B_01.jpg?gallery" class="img2">
+          <p class="productName">DENALI FLEECE JACKET</p>
+          <p>143,200 원</p>
+          <span>#캠핑용</span><span>#일상용</span><span>#레귤러핏</span>
+        </div>
+        <div class="jacket brown beige 95 100 105 110">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034470/NJ4FP54B.jpg?gallery" 
+          alt="DENALI FLEECE JACKET" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ4FP54B_NJ4FP54B_02.jpg?gallery" class="img2">
+          <p class="productName">PLAY GREEN RVS FLEECE JACKET</p>
+          <p>132,300 원</p>
+          <span>#캠핑용</span><span>#일상용</span><span>#레귤러핏</span>
+        </div>
+        <div class="shirt yellow 80 85 90 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5MP53C_NM5MP53C_primary.jpg?gallery" 
+          alt="HIKE AND CAMP SWEATSHIRTS" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5MP53C_NM5MP53C_01.jpg?gallery" class="img2">
+          <p class="productName">HIKE AND CAMP SWEATSHIRTS</p>
+          <p>79,200 원</p>
+          <span>#여행용</span><span>#일상용</span><span>#루즈핏</span>
+        </div>
+        <div class="shirt blue 90 95 100">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000035668/NM5PP72A_NM5PP72A_primary.jpg?gallery" 
+          alt="PRINTED HOODIE" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PP72A_NM5PP72A_01.jpg?gallery" class="img2">
+          <p class="productName">PRINTED HOODIE</p>
+          <p>118,300 원</p>
+          <span>#여행용</span><span>#일상용</span><span>#세미루즈핏</span>
+        </div>
+        <div class="padding red 95 100 105 110" >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034605/NJ1DP79B-1.jpg?gallery" 
+          alt="SUMMIT PRO DOWN JACKET" class="img1 ">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ1DP79B_NJ1DP79B_01.jpg?gallery" class="img2">
+          <p class="productName">SUMMIT PRO DOWN JACKET</p>
+          <p>629,000 원</p>
+          <span>#RDS다운</span><span>#고산원정용</span><span>#세미루즈핏</span>
+        </div>
+        <div class="Men shirt gray navy 90 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PP71B_NM5PP71B_primary.jpg?gallery"
+           alt="PLAITED KNIT PULLOVER HOODIE" class="img1 "  >
+           <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PP71B_NM5PP71B_01.jpg?gallery" class="img2">
+           <p class="productName">PLAITED KNIT PULLOVER HOODIE</p>
+          <p>104,300 원</p>
+          <span>#여행용</span><span>#일상용</span><span>#레귤러핏</span>
+        </div>
+        <div class="shirt white 90 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PP51L_NM5PP51L_00.jpg?gallery" 
+          alt="EXPLORE HOOD PULLOVER" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5PP51L_NM5PP51L_01.jpg?gallery" class="img2">
+          <p class="productName">EXPLORE HOOD PULLOVER</p>
+          <p>115,200 원</p>
+          <span>#여행용</span><span>#일상용</span><span>#루즈핏</span>
+        </div>
+        <div class="shirt pink violet 85 90 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5MP40E_NM5MP40E_primary.jpg?gallery" 
+          alt="COTTON ESSENTIAL SWEATSHIRTS" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5MP40E_NM5MP40E_01.jpg?gallery" class="img2">
+          <p class="productName">COTTON ESSENTIAL SWEATSHIRTS</p>
+          <p>63,200 원</p>
+          <span>#아웃도어활동용</span><span>#일상용</span><span>#세미루즈핏</span>
+        </div>
+        <div class="jacket red 95 100 105 110">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000034690/NJ2GP73C.jpg?gallery" 
+          alt="EXPLORE HOOD PULLOVER" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NJ2GP73C_NJ2GP73C_01.jpg?gallery" class="img2">
+          <p class="productName">EXPLORE HOOD PULLOVER</p>
+          <p>593,100 원</p>
+          <span>#고산원정용</span><span>#베이스캠프용</span><span>#레귤러핏</span>
+        </div>
+        <div class="Men pants black 90 95 100">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6KP12A_NP6KP12A_hover.jpg?gallery" 
+          alt="M'S MA TRAINING PANTS" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6KP12A_NP6KP12A_primary.jpg?gallery" class="img2">
+          <p class="productName">M'S MA TRAINING PANTS</p>
+          <p>89,000 원</p>
+          <span>#트레이닝용</span><span>#일상용</span><span>#레귤러핏</span>
+        </div>
+        <div class="Men pants gray 90 95 100 105 110 115" >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/4000035193/NP6KP51K.jpg?gallery" 
+          alt="DAILY ESSENTIAL EX SHORTS" class="img1 ">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6KP51K_NP6KP51K_01.jpg?gallery" class="img2">
+          <p class="productName">BONNEY SWEATPANTS</p>
+          <p>106,200 원</p>
+          <span>#여행용</span><span>#일상용</span><span>#루즈핏</span>
+        </div>
+        <div class="Men pants gray 90 95 100">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6KP12B_NP6KP12B_primary.jpg?gallery" 
+          alt="M'S MA TRAINING PANTS" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6KP12B_NP6KP12B_01.jpg?gallery" class="img2">
+          <p class="productName">M'S MA TRAINING PANTS</p>
+          <p>89,000 원</p>
+          <span>#트레이닝용</span><span>#일상용</span><span>#레귤러핏</span>
+        </div>
+        <div class="shirt pink 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5MP51M_NM5MP51M_primary.jpg?gallery" 
+          alt="1966 LOGO SWEATSHIRTS" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NM5MP51M_NM5MP51M_01.jpg?gallery" class="img2">
+          <p class="productName">1966 LOGO SWEATSHIRTS</p>
+          <p>97,200 원</p>
+          <span>#여행용</span><span>#일상용</span><span>#루즈핏</span>
+        </div>
+        <div class="Men pants khaki green beige 90 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6KP12C_NP6KP12C_primary.jpg?gallery" 
+          alt="M'S MA TRAINING PANTS" class="img1 "  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6KP12C_NP6KP12C_01.jpg?gallery" class="img2">
+          <p class="productName">M'S MA TRAINING PANTS</p>
+          <p>89,000 원</p>          
+          <span>#트레이닝용</span><span>#일상용</span><span>#레귤러핏</span>
+        </div>
+        <div class="Men pants brown beige 90 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6GP50B_NP6GP50B_primary.jpg?gallery" 
+          alt="M GTX MOUNTAIN PANT" class="img1"  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6GP50B_NP6GP50B_01.jpg?gallery" class="img2">
+          <p class="productName">M GTX MOUNTAIN PANT</p>
+          <p>332,100 원</p>
+          <span>#아웃도어활동용</span><span>#일상용</span>
+        </div>
+        <div class="Men pants orange brown 90 95 100 105">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6NP54C_NP6NP54C_primary.jpg?gallery" 
+          alt="DENALI WIND PANTS" class="img1"  >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NP6NP54C_NP6NP54C_01.jpg?gallery" class="img2">
+          <p class="productName">DENALI WIND PANTS</p>
+          <p>98,100 원</p>
+          <span>#캠핑용</span><span>#일상용</span><span>#세미루즈핏</span>
+        </div>
+        <div class="Men pants yellow 95 100 105 110" >
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NS6NP10D_NS6NP10D_primary.jpg?gallery" 
+          alt="DAILY ESSENTIAL EX SHORTS" class="img1 ">
+          <img src="https://image.thenorthfacekorea.co.kr/cmsstatic/product/NS6NP10D_NS6NP10D_01.jpg?gallery" class="img2">
+          <p class="productName">DAILY ESSENTIAL EX SHORTS</p>
+          <p>44,200 원</p>
+          <span>#아웃도어활동용</span><span>#일상용</span><span>#루즈핏</span>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 
+  <footer class="footer" id="footer">
+    <div class="footer">dddddddddddddddddddddddddddddddfooter 적용할 공간 ddddddddddddddddddddddddddddddddd</div>
+  </footer> -->
+
+
+  <!-- 위로 올라가기 버튼 추가-->
+  <div class="videoButton">
+    <button type="button" class="xButton">x</button>
+    <video class="paddingVideo" autoplay="autoplay" loop="loop" muted="muted" webkit-playsinline="webkit-playsinline" playsinline="playsinline" id="mvid" width="200px" >
+      <source src="https://image.thenorthfacekorea.co.kr/NORTHFACE_15S_MASTER.mp4">
+    </video>
+  </div>
+  <button class="scrollButton upButton">∧</button>
+  <button class="scrollButton downButton">∨</button>
+
+
+
+
+</body>
+
+</html>
